@@ -1,0 +1,5 @@
+com\uniyaz\core\service\AnketServiceTest.class
+com\uniyaz\core\service\CevapServiceTest.class
+com\uniyaz\core\service\SoruServiceTest.class
+com\uniyaz\core\service\KullaniciServiceTest.class
+com\uniyaz\core\service\SecenekServiceTest.class
