@@ -8,6 +8,7 @@ public class HbSaveButton extends Button
 {
     public HbSaveButton()
     {
+        addStyleName("btnPrimary");
         setIcon(FontAwesome.SAVE);
         addStyleName(ValoTheme.BUTTON_PRIMARY);
     }

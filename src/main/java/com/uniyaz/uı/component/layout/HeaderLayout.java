@@ -13,6 +13,7 @@ public class HeaderLayout extends HorizontalLayout
     {
         setSizeFull();
 
+        addStyleName("textHeader");
         buildLayout();
         addComponent(mailLayout);
 

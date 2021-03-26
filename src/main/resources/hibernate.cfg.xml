@@ -16,6 +16,7 @@
 
         <mapping class="com.uniyaz.core.domain.Kullanici"></mapping>
         <mapping class="com.uniyaz.core.domain.Anket"></mapping>
+        <mapping class="com.uniyaz.core.domain.Panel"></mapping>
         <mapping class="com.uniyaz.core.domain.Soru"></mapping>
         <mapping class="com.uniyaz.core.domain.Cevap"></mapping>
         <mapping class="com.uniyaz.core.domain.Secenek"></mapping>

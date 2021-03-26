@@ -17,6 +17,8 @@ public class HbMenuBar extends MenuBar
     {
         setSizeFull();
 
+        addStyleName("hbMenuBar");
+
         HbUI hbUI = (HbUI) UI.getCurrent();
         contentComponent = hbUI.getContentComponent();
 

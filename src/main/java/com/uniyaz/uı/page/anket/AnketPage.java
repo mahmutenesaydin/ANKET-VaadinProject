@@ -27,11 +27,13 @@ public class AnketPage extends BasePage {
     public AnketPage()
     {
         this(new Anket());
+        addStyleName("anketPage");
     }
 
     public AnketPage(Anket anket) {
         setSizeFull();
         buildMainLayout();
+        addStyleName("anketPage");
         addComponent(mainLayout);
         setComponentAlignment(mainLayout, Alignment.MIDDLE_CENTER);
 

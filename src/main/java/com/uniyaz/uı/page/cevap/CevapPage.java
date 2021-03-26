@@ -15,19 +15,17 @@ import com.vaadin.ui.*;
 
 public class CevapPage extends BasePage
 {
-    @PropertyId("ID")
-    private TextField id;
-
-    @PropertyId("cevap")
-    private TextField cevap;
-
     private FormLayout mainLayout;
 
     private BeanItem<Cevap> cevapBeanItem;
     private FieldGroup binder;
-    private HbSaveButton vpSaveButton;
-    private Kullanici kullanici;
     private Soru soru;
+    private Cevap cevap;
+
+    public CevapPage(Cevap cevap)
+    {
+        this.cevap = cevap;
+    }
 
     public CevapPage(Soru soru)
     {
@@ -50,43 +48,26 @@ public class CevapPage extends BasePage
         binder.bindMemberFields(this);
     }
 
+
     @Override
     public void buildMainLayout() {
         mainLayout = new FormLayout();
         mainLayout.setSizeUndefined();
 
-        id = new TextField();
-        id.setCaption("ID");
-        id.setEnabled(false);
-        mainLayout.addComponent(id);
-
-        cevap = new TextField();
-        cevap.setCaption("Cevap");
-        mainLayout.addComponent(cevap);
-
-        vpSaveButton = new HbSaveButton();
-        vpSaveButton.addClickListener(new Button.ClickListener()
+        try
         {
-            @Override
-            public void buttonClick(Button.ClickEvent clickEvent)
-            {
-                try
-                {
-                    binder.commit();
+            binder.commit();
 
-                    Cevap cevap = cevapBeanItem.getBean();
-                    CevapService cevapService = new CevapService();
-                    cevapService.save(cevap);
-                }
-                catch (FieldGroup.CommitException e)
-                {
-                    Notification.show("Geçersiz, lütfen geçerli değerler giriniz", Notification.Type.ERROR_MESSAGE);
-                } catch (Exception e)
-                {
-                    Notification.show(e.getMessage(), Notification.Type.ERROR_MESSAGE);
-                }
-            }
-        });
-        mainLayout.addComponent(vpSaveButton);
+            Cevap cevap = cevapBeanItem.getBean();
+            CevapService cevapService = new CevapService();
+            cevapService.save(cevap);
+        }
+        catch (FieldGroup.CommitException e)
+        {
+            Notification.show("Geçersiz, lütfen geçerli değerler giriniz", Notification.Type.ERROR_MESSAGE);
+        } catch (Exception e)
+        {
+            Notification.show(e.getMessage(), Notification.Type.ERROR_MESSAGE);
+        }
     }
 }

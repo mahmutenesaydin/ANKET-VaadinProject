@@ -44,4 +44,9 @@ public class Secenek extends BaseEntity
     public void setSoru(com.uniyaz.core.domain.Soru soru) {
         Soru = soru;
     }
+
+    @Override
+    public String toString() {
+        return secenek;
+    }
 }

@@ -20,6 +20,10 @@ public class Cevap extends BaseEntity
     @JoinColumn(name = "ID_SORU", foreignKey = @ForeignKey(name = "FK_SORU_CEVAP"))
     private Soru soru;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_SECENEK", foreignKey = @ForeignKey(name = "FK_SECENEK_CEVAP"))
+    private Secenek secenek;
+
     @Override
     public Long getId() {
         return id;
@@ -43,5 +47,13 @@ public class Cevap extends BaseEntity
 
     public void setSoru(Soru soru) {
         this.soru = soru;
+    }
+
+    public Secenek getSecenek() {
+        return secenek;
+    }
+
+    public void setSecenek(Secenek secenek) {
+        this.secenek = secenek;
     }
 }

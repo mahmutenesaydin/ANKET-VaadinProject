@@ -5,7 +5,6 @@ import com.uniyaz.core.domain.Anket;
 import com.uniyaz.core.domain.Soru;
 import com.uniyaz.core.service.AnketService;
 import com.uniyaz.uı.page.soru.SoruCevapla;
-import com.uniyaz.uı.page.soru.SoruListPage;
 import com.vaadin.data.Container;
 import com.vaadin.data.Item;
 import com.vaadin.data.util.IndexedContainer;
@@ -73,21 +72,28 @@ public class AnketCozListPage extends VerticalLayout {
 
 
 
-            Button secim = buildSecimButton(new SoruCevapla(anket.getId()));
+            //   Button secim = buildSecimButton(new SoruCevapla(anket.getId()));
+           Button secim = buildSecimButton();
             secim.setId(anket.getId().toString());
+            secim.setData(anket);
             item.getItemProperty("soruCevapla").setValue(secim);
 
         }
     }
 
-    private Button buildSecimButton(SoruCevapla soruCevapla)
+    private Button buildSecimButton()
     {
         Button secim = new Button("ANKETİ ÇÖZ");
         secim.setIcon(FontAwesome.CHECK);
         secim.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
-                SoruCevapla soruCevapla1 = new SoruCevapla(soruCevapla,Long.parseLong(secim.getId()));
+                //   SoruCevapla soruCevapla1 = new SoruCevapla(soruCevapla,Long.parseLong(secim.getId()));
+                Anket anket2= (Anket) clickEvent.getButton().getData();
+
+                HbUI syUI = (HbUI) UI.getCurrent();
+                syUI.setAnket(anket2);
+                SoruCevapla soruCevapla1 = new SoruCevapla(anket2);
                 Window window = new Window();
                 window.setCaption("ANKET");
                 window.setClosable(true);
@@ -96,9 +102,9 @@ public class AnketCozListPage extends VerticalLayout {
                 window.setHeight(50, Unit.PERCENTAGE);
                 window.setResizable(true);
                 window.center();
-                window.setContent(soruCevapla);
+                window.setContent(soruCevapla1);
 
-                HbUI syUI = (HbUI) HbUI.getCurrent();
+                //HbUI syUI = (HbUI) HbUI.getCurrent();
                 syUI.addWindow(window);
 
             }

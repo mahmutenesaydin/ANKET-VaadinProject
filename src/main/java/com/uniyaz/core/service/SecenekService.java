@@ -9,7 +9,14 @@ import java.util.List;
 
 public class SecenekService extends BaseService<Secenek, SecenekDao>
 {
+    SecenekDao secenekDao = new SecenekDao();
+
     public SecenekService() {
         super(SecenekDao.class);
     }
+
+    public List<Secenek> findAllbyAnketID(Long id) {
+        return secenekDao.findAllbyAnketID(id);
+    }
+
 }
